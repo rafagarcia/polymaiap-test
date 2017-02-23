@@ -1,0 +1,110 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymaiap-loader/polymaiap-loader.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/iron-list/iron-list.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="maiap-list">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+        height: calc(100vh - 64px);
+        padding: 0;
+      }
+
+      iron-list {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      #listWrapper {
+        display: none;
+      }
+
+      .item {
+        height: 15vh;
+        flex: 1 0 100%;
+        display: flex;
+        padding: 0 10px;
+        align-items: center;
+        cursor: pointer;
+      }
+
+      .item > img {
+        border-radius: 50%;
+      }
+
+      .item__name {
+        flex: 4 0 auto;
+        margin-left: 10px;
+      }
+
+      .item__link {
+        flex: 2 0 auto;
+        text-align: right;
+      }
+    </style>
+    <!-- See https://randomuser.me/documentation to check mock server api -->   
+    <iron-ajax
+      auto
+      url= "data/employees.json"
+      last-response= "{{data}}"
+      debounce-duration= "2000"
+    ></iron-ajax>
+    <!-- Managing components view through CSS -->
+    <polymaiap-loader id="loader" message="Loading"></polymaiap-loader>
+    <div id="listWrapper">
+      <iron-list items="[[data]]" selected-item="{{selectedItem}}" as="item" selection-enabled>
+        <template>
+          <!-- Good candidate to be converted into a component -->
+          <div class="item">
+            <img src$="[[item.image]]" alt$="[[item.firstName]] [[item.lastName]]" />
+            <span class="item__name">[[item.firstName]] [[item.lastName]]</span>
+            <span class="item__link">View employee &gt;</span>
+          </div>
+        </template>
+      </iron-list>
+    </div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'maiap-list',
+
+      properties: {
+        data: {
+          type: Object,
+          observer: '_handleResponse'
+        },
+
+        selectedItem: {
+          type: Object,
+          observer: '_handleSelection'
+        }
+      },
+
+      _handleResponse: function() {
+        this.$.loader.style.display = 'none';
+        this.$.listWrapper.style.display = 'block';
+      },
+
+      _handleSelection: function() {
+        if (this.selectedItem) {
+          this.fire('selectedItem', this.selectedItem);
+        }
+      }
+    });
+  </script>
+</dom-module>
