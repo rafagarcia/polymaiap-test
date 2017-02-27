@@ -69,7 +69,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <iron-list items="[[data]]" selected-item="{{selectedItem}}" as="item" selection-enabled>
         <template>
           <!-- Good candidate to be converted into a component -->
-          <div class="item">
+          <div class="item" tabindex$="[[index]]">
             <img src$="[[item.image]]" alt$="[[item.firstName]] [[item.lastName]]" />
             <span class="item__name">[[item.firstName]] [[item.lastName]]</span>
             <span class="item__link">View employee &gt;</span>
@@ -103,6 +103,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _handleSelection: function() {
         if (this.selectedItem) {
           this.fire('selectedItem', this.selectedItem);
+          // Deselect previous selected item to ensure navigation
+          this.$$('iron-list').deselectItem(this.selectedItem);
         }
       }
     });

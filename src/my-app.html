@@ -22,7 +22,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
-<dom-module id="my-app">
+<dom-module id="maiap-app">
   <template>
     <style>
       :host {
@@ -84,10 +84,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </app-header>
 
         <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="404"
-            role="main">
+          selected="[[page]]"
+          attr-for-selected="name"
+          fallback-selection="404"
+          role="main">
           <maiap-list name="list"></maiap-list>
           <maiap-employee name="employee" item="[[item]]" route="[[subroute]]"></maiap-employee>
           <error404 name="404"></error404>
@@ -98,7 +98,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     Polymer({
-      is: 'my-app',
+      is: 'maiap-app',
 
       properties: {
         page: {

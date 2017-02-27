@@ -4,34 +4,34 @@
 		"firstName": "Ignacio",
 		"lastName": "Cimadevilla",
 		"image": "https://s3.amazonaws.com/uifaces/faces/twitter/enda/73.jpg",
-		"position": "Animation architect and netliga chaunselor"
+		"position": "Animation architect"
 	},
 	{
 		"index": 1,
 		"firstName": "Pablo",
 		"lastName": "Rodriguez",
 		"image": "https://s3.amazonaws.com/uifaces/faces/twitter/guillogo/73.jpg",
-		"position": "Major of Playa Honda, A.K.A Hugo"
+		"position": "Scrum master"
 	},
 	{
 		"index": 2,
 		"firstName": "Ilias",
 		"lastName": "Moreno",
 		"image": "https://s3.amazonaws.com/uifaces/faces/twitter/iboldurev/73.jpg",
-		"position": "Chiquito´s neighbour"
+		"position": "QA developer"
 	},
 	{
 		"index": 3,
 		"firstName": "David",
 		"lastName": "Iglesias",
 		"image": "https://s3.amazonaws.com/uifaces/faces/twitter/smalonso/73.jpg",
-		"position": "Senior Architect and english dislexic"
+		"position": "Senior Architect"
 	},
 	{
 		"index": 4,
 		"firstName": "Rafael",
 		"lastName": "García",
 		"image": "https://s3.amazonaws.com/uifaces/faces/twitter/carlyson/73.jpg",
-		"position": "Multiowner"
+		"position": "Front end developer"
 	}
 ]
