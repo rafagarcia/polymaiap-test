@@ -95,6 +95,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
+      //Once data is received via ajax and stored in the data property, loader is hidden and employees list is shown
       _handleResponse: function() {
         this.$.loader.style.display = 'none';
         this.$.listWrapper.style.display = 'block';
@@ -103,7 +104,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _handleSelection: function() {
         if (this.selectedItem) {
           this.fire('selectedItem', this.selectedItem);
-          // Deselect previous selected item to ensure navigation
+          // Deselect previous selected item to ensure navigation between list and detail
           this.$$('iron-list').deselectItem(this.selectedItem);
         }
       }
